@@ -64,7 +64,7 @@ export const TEXT_EXAMPLES: TextExample[] = [
 export const APP_CONFIG = {
   name: 'InclusioCheck',
   description: 'Detector de Lenguaje de Odio en Español con IA',
-  author: 'Antonio Domundo',
+  author: 'Antonio Dromundo',
   repository: 'https://github.com/tu-usuario/inclusiocheck',
   maxTextLength: 500,
 } as const;
