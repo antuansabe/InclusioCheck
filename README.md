@@ -1,10 +1,12 @@
-# InclusioCheck
+# SinOdio
 
-Detector de Lenguaje de Odio en Español con IA
+Detector de lenguaje de odio con inteligencia artificial
 
 ## 🚀 Descripción
 
-InclusioCheck es una aplicación web moderna que utiliza inteligencia artificial para detectar lenguaje de odio en textos en español. Está construida con Next.js 15, TypeScript, y utiliza el modelo BETO (BERT en Español) fine-tuned para la clasificación de hate speech.
+SinOdio es una aplicación web moderna que utiliza inteligencia artificial para detectar lenguaje de odio en textos en español. Está construida con Next.js 15, TypeScript, y utiliza el modelo BETO (BERT en Español) fine-tuned para la clasificación de hate speech.
+
+**Tecnología para comunicar sin odio.**
 
 ## ✨ Características
 
@@ -44,8 +46,8 @@ Entrenado con **14,530 ejemplos** de texto en español.
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/antuansabe/InclusioCheck.git
-cd InclusioCheck
+git clone https://github.com/antuansabe/SinOdio.git
+cd SinOdio
 
 # Instalar dependencias
 npm install
@@ -86,13 +88,13 @@ src/
 
 ## 🔗 Enlaces
 
-- 🤗 [Modelo en HuggingFace](https://huggingface.co/antonn-dromundo/InclusioCheck-BETO-HateSpeech)
+- 🤗 [Modelo en HuggingFace](https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech)
 - 💼 [LinkedIn](https://www.linkedin.com/in/antonndromundo/)
 - 🐙 [GitHub](https://github.com/antuansabe)
 
 ## 👨‍💻 Autor
 
-**Antonio Domundo**
+**Antonio Dromundo**
 - Email: antuansabe@gmail.com
 - GitHub: [@antuansabe](https://github.com/antuansabe)
 - LinkedIn: [antonndromundo](https://www.linkedin.com/in/antonndromundo/)

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { MODEL_METRICS } from "@/lib/constants";
 import MetricsCard from "@/components/shared/MetricsCard";
@@ -8,9 +9,15 @@ import ExamplesGrid from "@/components/features/ExamplesGrid";
 import { TrendingUp, Target, CheckCircle2, Zap } from "lucide-react";
 
 export default function Home() {
+  const [selectedExample, setSelectedExample] = useState<string>('');
+
   const handleExampleSelect = (text: string) => {
-    // TODO: Conectar con el Analyzer en Fase 3
-    console.log('Example selected:', text);
+    setSelectedExample(text);
+    // Scroll al analyzer
+    const analyzerElement = document.getElementById('analyzer-section');
+    if (analyzerElement) {
+      analyzerElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
@@ -66,8 +73,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Analyzer - 2 columns */}
-          <div className="lg:col-span-2">
-            <Analyzer />
+          <div className="lg:col-span-2" id="analyzer-section">
+            <Analyzer initialText={selectedExample} key={selectedExample} />
           </div>
 
           {/* Sidebar - 1 column */}

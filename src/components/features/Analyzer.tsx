@@ -1,22 +1,88 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Loader2, ShieldCheck } from 'lucide-react';
 import { APP_CONFIG } from '@/lib/constants';
-import type { AnalysisState } from '@/lib/types';
+import type { AnalysisResult, AnalysisState } from '@/lib/types';
 import ResultCard from './ResultCard';
 
-export default function Analyzer() {
-  const [text, setText] = useState('');
-  const [analysisState] = useState<AnalysisState>({ status: 'idle' });
+interface AnalyzerProps {
+  initialText?: string;
+}
+
+export default function Analyzer({ initialText = '' }: AnalyzerProps) {
+  const [text, setText] = useState(initialText);
+  const [analysisState, setAnalysisState] = useState<AnalysisState>({ status: 'idle' });
+
+  // Actualizar texto cuando cambia initialText
+  useEffect(() => {
+    setText(initialText);
+  }, [initialText]);
 
   const handleAnalyze = async () => {
-    // TODO: Implementar en Fase 3
-    console.log('Analyzing:', text);
+    if (!text.trim()) {
+      setAnalysisState({ status: 'error', error: 'Por favor ingresa un texto' });
+      return;
+    }
+
+    if (text.length > APP_CONFIG.maxTextLength) {
+      setAnalysisState({
+        status: 'error',
+        error: `El texto no puede exceder ${APP_CONFIG.maxTextLength} caracteres`
+      });
+      return;
+    }
+
+    // Iniciar loading
+    setAnalysisState({ status: 'loading' });
+
+    try {
+      const response = await fetch('/api/analyze', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Manejar errores específicos
+        if (response.status === 503) {
+          setAnalysisState({
+            status: 'error',
+            error: '⏳ El modelo está cargando. Espera 20 segundos e intenta de nuevo.'
+          });
+          return;
+        }
+
+        setAnalysisState({
+          status: 'error',
+          error: data.error || 'Error al analizar el texto'
+        });
+        return;
+      }
+
+      // Éxito - convertir timestamp de string a Date
+      const result: AnalysisResult = {
+        ...data,
+        timestamp: new Date(data.timestamp)
+      };
+
+      setAnalysisState({ status: 'success', data: result });
+
+    } catch (error) {
+      console.error('Error en análisis:', error);
+      setAnalysisState({
+        status: 'error',
+        error: 'Error de conexión. Verifica tu internet e intenta de nuevo.'
+      });
+    }
   };
 
   const isLoading = analysisState.status === 'loading';

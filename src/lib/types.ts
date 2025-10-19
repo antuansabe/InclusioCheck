@@ -34,6 +34,9 @@ export interface TextExample {
   text: string;
   isHate: boolean;
   category?: string;
+  useCase?: string; // Caso de uso (ej: "WhatsApp", "Twitter", etc.)
+  scenario?: string; // Descripción del escenario
+  icon?: string; // Emoji del caso de uso
 }
 
 /**
@@ -52,4 +55,29 @@ export interface ModelMetrics {
 export interface BaseProps {
   className?: string;
   children?: React.ReactNode;
+}
+
+/**
+ * Respuesta de nuestra API /api/analyze
+ */
+export interface APIAnalysisResponse {
+  isHateSpeech: boolean;
+  confidence: number;
+  label: string;
+  timestamp: string;
+}
+
+/**
+ * Respuesta de error de la API
+ */
+export interface APIErrorResponse {
+  error: string;
+  details?: string;
+}
+
+/**
+ * Request body para /api/analyze
+ */
+export interface AnalyzeRequest {
+  text: string;
 }

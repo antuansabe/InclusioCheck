@@ -6,10 +6,10 @@ import type { TextExample, ModelMetrics } from './types';
  * Información del modelo
  */
 export const MODEL_INFO = {
-  name: 'InclusioCheck-BETO-HateSpeech',
+  name: 'SinOdio-BETO-HateSpeech',
   owner: 'antonn-dromundo',
-  fullName: 'antonn-dromundo/InclusioCheck-BETO-HateSpeech',
-  huggingFaceUrl: 'https://huggingface.co/antonn-dromundo/InclusioCheck-BETO-HateSpeech',
+  fullName: 'antonn-dromundo/SinOdio-BETO-HateSpeech',
+  huggingFaceUrl: 'https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech',
 } as const;
 
 /**
@@ -23,38 +23,57 @@ export const MODEL_METRICS: ModelMetrics = {
 };
 
 /**
- * Ejemplos de texto para probar
+ * Ejemplos de texto con casos de uso reales
+ * Incluye casos sutiles y ambiguos para demostrar el valor del detector
  */
 export const TEXT_EXAMPLES: TextExample[] = [
   {
-    text: 'Me encanta la diversidad cultural de mi ciudad',
+    text: 'Recibí este mensaje: "Me encanta trabajar con gente de diferentes culturas, cada día aprendo algo nuevo del equipo"',
     isHate: false,
-    category: 'positive',
+    category: 'Contenido inclusivo',
+    useCase: 'WhatsApp',
+    scenario: 'Mensaje recibido',
+    icon: '💬',
   },
   {
-    text: 'Todos los inmigrantes son delincuentes',
+    text: 'Campaña: "Nuestro barrio está cambiando mucho últimamente... hay que proteger nuestras tradiciones y valores de siempre" - ¿Lo publico?',
     isHate: true,
-    category: 'xenophobia',
+    category: 'Xenofobia sutil',
+    useCase: 'Community Manager',
+    scenario: 'Borrador de publicación',
+    icon: '📱',
   },
   {
-    text: 'Las mujeres merecen igualdad de oportunidades',
+    text: 'Tweet: "No soy machista, pero las mujeres son naturalmente más emocionales, por eso son mejores en trabajos de cuidado"',
+    isHate: true,
+    category: 'Sexismo encubierto',
+    useCase: 'Twitter/X',
+    scenario: 'Antes de tuitear',
+    icon: '🐦',
+  },
+  {
+    text: 'Comentario: "Respeto a todos, pero los niños necesitan un papá y una mamá, es lo natural. Solo quiero lo mejor para ellos"',
+    isHate: true,
+    category: 'Homofobia disfrazada',
+    useCase: 'Moderación',
+    scenario: 'Comentario reportado',
+    icon: '⚠️',
+  },
+  {
+    text: 'Post: "En nuestra empresa celebramos el talento sin importar género, origen, orientación o creencias. Todos son bienvenidos 🌈"',
     isHate: false,
-    category: 'positive',
+    category: 'Contenido inclusivo',
+    useCase: 'Redes Sociales',
+    scenario: 'Publicación corporativa',
+    icon: '📸',
   },
   {
-    text: 'Los homosexuales son una aberración',
+    text: 'Chat: "Eres muy inteligente... para ser mujer latina jaja, lo digo como cumplido eh, no te ofendas"',
     isHate: true,
-    category: 'homophobia',
-  },
-  {
-    text: 'Respeto todas las religiones y culturas',
-    isHate: false,
-    category: 'positive',
-  },
-  {
-    text: 'Los musulmanes son todos terroristas',
-    isHate: true,
-    category: 'islamophobia',
+    category: 'Microagresión',
+    useCase: 'Chat Gaming',
+    scenario: 'Reporte de jugador',
+    icon: '🎮',
   },
 ];
 
@@ -62,10 +81,11 @@ export const TEXT_EXAMPLES: TextExample[] = [
  * Configuración de la aplicación
  */
 export const APP_CONFIG = {
-  name: 'InclusioCheck',
-  description: 'Detector de Lenguaje de Odio en Español con IA',
+  name: 'SinOdio',
+  description: 'Detector de lenguaje de odio con inteligencia artificial',
+  tagline: 'Tecnología para comunicar sin odio',
   author: 'Antonio Dromundo',
-  repository: 'https://github.com/tu-usuario/inclusiocheck',
+  repository: 'https://github.com/antuansabe/SinOdio',
   maxTextLength: 500,
 } as const;
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**InclusioCheck** - A Next.js application for accessibility checking and inclusive design validation.
+**SinOdio** - A Next.js application for hate speech detection using AI. Detector de lenguaje de odio con inteligencia artificial.
 
 ## Tech Stack
 
