@@ -1,158 +1,97 @@
+// src/app/api/analyze/route.ts
 import { NextRequest, NextResponse } from 'next/server';
+import { Client } from '@gradio/client';
+import type { AnalysisResponse, ApiError } from '@/types/api';
 
-// Tipos de respuesta
-interface HuggingFaceAPIResponse {
-  label: string;
-  score: number;
-}
-
-interface AnalysisResponse {
-  isHateSpeech: boolean;
-  confidence: number;
-  label: string;
-  timestamp: string;
-}
-
-interface ErrorResponse {
-  error: string;
-  details?: string;
-}
-
-// Configuración
-const HF_API_URL = 'https://api-inference.huggingface.co/models';
-const MODEL_ID = process.env.NEXT_PUBLIC_MODEL_ID;
-const HF_TOKEN = process.env.HUGGINGFACE_API_TOKEN;
+// URL de tu Space en HuggingFace
+const SPACE_URL = "antonn-dromundo/SinOdio-Demo";
 
 export async function POST(request: NextRequest) {
   try {
-    // Validar que existe el token
-    if (!HF_TOKEN) {
-      console.error('HuggingFace token no configurado');
-      return NextResponse.json(
-        { error: 'Configuración de API inválida' } as ErrorResponse,
-        { status: 500 }
-      );
-    }
+    // Obtener el texto del body
+    const { text } = await request.json();
 
-    // Validar que existe el modelo
-    if (!MODEL_ID) {
-      console.error('Model ID no configurado');
-      return NextResponse.json(
-        { error: 'Configuración de modelo inválida' } as ErrorResponse,
-        { status: 500 }
-      );
-    }
-
-    // Parsear el body
-    const body = await request.json();
-    const { text } = body;
-
-    // Validar input
+    // Validación
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { error: 'Texto inválido o vacío' } as ErrorResponse,
-        { status: 400 }
-      );
+      const error: ApiError = {
+        error: 'Texto inválido',
+        details: 'Debes proporcionar un texto válido para analizar'
+      };
+      return NextResponse.json(error, { status: 400 });
     }
 
-    // Validar longitud
+    if (text.trim().length === 0) {
+      const error: ApiError = {
+        error: 'Texto vacío',
+        details: 'El texto no puede estar vacío'
+      };
+      return NextResponse.json(error, { status: 400 });
+    }
+
     if (text.length > 500) {
-      return NextResponse.json(
-        { error: 'El texto excede el límite de 500 caracteres' } as ErrorResponse,
-        { status: 400 }
-      );
+      const error: ApiError = {
+        error: 'Texto muy largo',
+        details: 'El texto no puede exceder 500 caracteres'
+      };
+      return NextResponse.json(error, { status: 400 });
     }
 
-    console.log('Analizando texto:', text.substring(0, 50) + '...');
+    // Conectar con Gradio Client
+    const client = await Client.connect(SPACE_URL);
 
-    // Llamar a HuggingFace API
-    const response = await fetch(`${HF_API_URL}/${MODEL_ID}`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${HF_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ inputs: text }),
+    // Hacer la predicción
+    const result = await client.predict("/predict", {
+      texto: text
     });
 
-    // Manejar errores de HF
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Error de HuggingFace:', response.status, errorText);
+    // Procesar la respuesta de Gradio
+    // El resultado viene en result.data
+    const gradioResponse = result.data as any;
 
-      // Errores comunes
-      if (response.status === 503) {
-        return NextResponse.json(
-          {
-            error: 'El modelo está cargando. Intenta de nuevo en 20 segundos.',
-            details: 'Model is loading'
-          } as ErrorResponse,
-          { status: 503 }
-        );
+    // Gradio devuelve [prediction_object, message]
+    const predictionObject = gradioResponse[0];
+    const message = gradioResponse[1];
+
+    // El objeto de predicción tiene: { label: string, confidences: Array }
+    const confidences = predictionObject.confidences;
+
+    // Extraer probabilidades del array de confidences
+    let inclusiveProb = 0;
+    let hateProb = 0;
+
+    for (const conf of confidences) {
+      if (conf.label === "✅ Lenguaje Inclusivo") {
+        inclusiveProb = conf.confidence;
+      } else if (conf.label === "⚠️ Discurso de Odio/Excluyente") {
+        hateProb = conf.confidence;
       }
-
-      if (response.status === 401) {
-        return NextResponse.json(
-          { error: 'Token de API inválido' } as ErrorResponse,
-          { status: 401 }
-        );
-      }
-
-      return NextResponse.json(
-        {
-          error: 'Error al comunicarse con el modelo de IA',
-          details: errorText
-        } as ErrorResponse,
-        { status: response.status }
-      );
     }
 
-    // Parsear respuesta
-    const data = await response.json() as HuggingFaceAPIResponse[][];
-
-    // HuggingFace devuelve un array de arrays
-    if (!data || !data[0] || !data[0][0]) {
-      console.error('Formato de respuesta inesperado:', data);
-      return NextResponse.json(
-        { error: 'Formato de respuesta inválido del modelo' } as ErrorResponse,
-        { status: 500 }
-      );
-    }
-
-    // Obtener la predicción con mayor score
-    const predictions = data[0];
-    const hateSpeechPrediction = predictions.find(p => p.label === 'LABEL_1');
-    const noHatePrediction = predictions.find(p => p.label === 'LABEL_0');
-
-    // Determinar el resultado
-    const isHateSpeech = hateSpeechPrediction && hateSpeechPrediction.score > 0.5;
-    const confidence = Math.round(
-      (isHateSpeech ? hateSpeechPrediction!.score : noHatePrediction!.score) * 100
-    );
+    // Determinar clase predicha
+    const predictedClass = inclusiveProb > hateProb ? 0 : 1;
+    const confidence = Math.max(inclusiveProb, hateProb);
 
     // Construir respuesta
-    const result: AnalysisResponse = {
-      isHateSpeech: !!isHateSpeech,
-      confidence,
-      label: isHateSpeech ? 'Hate Speech' : 'No Hate Speech',
-      timestamp: new Date().toISOString(),
+    const response: AnalysisResponse = {
+      probabilities: {
+        "✅ Lenguaje Inclusivo": inclusiveProb,
+        "⚠️ Discurso de Odio/Excluyente": hateProb
+      },
+      message: message || '',
+      predictedClass,
+      confidence
     };
 
-    console.log('Resultado:', result);
-
-    return NextResponse.json(result);
+    return NextResponse.json(response);
 
   } catch (error) {
-    console.error('Error en API route:', error);
-    return NextResponse.json(
-      {
-        error: 'Error interno del servidor',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      } as ErrorResponse,
-      { status: 500 }
-    );
+    console.error('Error en análisis:', error);
+
+    const apiError: ApiError = {
+      error: 'Error al procesar el texto',
+      details: error instanceof Error ? error.message : 'Error desconocido'
+    };
+
+    return NextResponse.json(apiError, { status: 500 });
   }
 }
-
-// Configuración de runtime (opcional, para Vercel)
-export const runtime = 'edge';
