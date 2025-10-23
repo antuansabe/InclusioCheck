@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     // Procesar la respuesta de Gradio
     // El resultado viene en result.data
-    const gradioResponse = result.data as any;
+    const gradioResponse = result.data as [{ label: string; confidences: Array<{ label: string; confidence: number }> }, string];
 
     // Gradio devuelve [prediction_object, message]
     const predictionObject = gradioResponse[0];

@@ -5,12 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, ShieldCheck } from 'lucide-react';
-import { APP_CONFIG } from '@/lib/constants';
-import type { AnalysisResult, AnalysisState } from '@/lib/types';
 import type { AnalysisResponse } from '@/types/api';
 import { isApiError } from '@/types/api';
-import ResultCard from './ResultCard';
 
 interface AnalyzerProps {
   initialText?: string;
@@ -21,7 +17,6 @@ export default function Analyzer({ initialText = '' }: AnalyzerProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<AnalysisResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [analysisState, setAnalysisState] = useState<AnalysisState>({ status: 'idle' });
 
   // Agregar contador de caracteres
   const charCount = text.length;

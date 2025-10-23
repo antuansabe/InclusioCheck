@@ -24,56 +24,56 @@ export const MODEL_METRICS: ModelMetrics = {
 
 /**
  * Ejemplos de texto con casos de uso reales
- * Incluye casos sutiles y ambiguos para demostrar el valor del detector
+ * Incluye casos obvios y claros para demostrar la detección del modelo
  */
 export const TEXT_EXAMPLES: TextExample[] = [
   {
-    text: 'Recibí este mensaje: "Me encanta trabajar con gente de diferentes culturas, cada día aprendo algo nuevo del equipo"',
+    text: 'Me encanta trabajar con personas de todas las culturas. La diversidad enriquece nuestro equipo y nos hace más creativos.',
     isHate: false,
     category: 'Contenido inclusivo',
-    useCase: 'WhatsApp',
-    scenario: 'Mensaje recibido',
-    icon: '💬',
+    useCase: 'Redes Sociales',
+    scenario: 'Post corporativo',
+    icon: '✅',
   },
   {
-    text: 'Campaña: "Nuestro barrio está cambiando mucho últimamente... hay que proteger nuestras tradiciones y valores de siempre" - ¿Lo publico?',
+    text: 'Los inmigrantes vienen a quitarnos el trabajo y destrozan nuestro país. Hay que echarlos a todos de aquí.',
     isHate: true,
-    category: 'Xenofobia sutil',
-    useCase: 'Community Manager',
-    scenario: 'Borrador de publicación',
-    icon: '📱',
-  },
-  {
-    text: 'Tweet: "No soy machista, pero las mujeres son naturalmente más emocionales, por eso son mejores en trabajos de cuidado"',
-    isHate: true,
-    category: 'Sexismo encubierto',
-    useCase: 'Twitter/X',
-    scenario: 'Antes de tuitear',
-    icon: '🐦',
-  },
-  {
-    text: 'Comentario: "Respeto a todos, pero los niños necesitan un papá y una mamá, es lo natural. Solo quiero lo mejor para ellos"',
-    isHate: true,
-    category: 'Homofobia disfrazada',
+    category: 'Xenofobia',
     useCase: 'Moderación',
     scenario: 'Comentario reportado',
     icon: '⚠️',
   },
   {
-    text: 'Post: "En nuestra empresa celebramos el talento sin importar género, origen, orientación o creencias. Todos son bienvenidos 🌈"',
-    isHate: false,
-    category: 'Contenido inclusivo',
-    useCase: 'Redes Sociales',
-    scenario: 'Publicación corporativa',
-    icon: '📸',
+    text: 'Las mujeres son inferiores a los hombres y solo sirven para estar en la cocina. No pueden hacer trabajos importantes.',
+    isHate: true,
+    category: 'Sexismo',
+    useCase: 'Chat',
+    scenario: 'Mensaje ofensivo',
+    icon: '🚫',
   },
   {
-    text: 'Chat: "Eres muy inteligente... para ser mujer latina jaja, lo digo como cumplido eh, no te ofendas"',
+    text: 'Respeto todas las orientaciones sexuales. El amor es amor y cada persona merece ser feliz con quien elija.',
+    isHate: false,
+    category: 'Contenido inclusivo',
+    useCase: 'Twitter/X',
+    scenario: 'Tweet de apoyo',
+    icon: '🏳️‍🌈',
+  },
+  {
+    text: 'Los gitanos son todos ladrones y sucios. No quiero que vivan en mi barrio ni cerca de mi familia.',
     isHate: true,
-    category: 'Microagresión',
-    useCase: 'Chat Gaming',
-    scenario: 'Reporte de jugador',
-    icon: '🎮',
+    category: 'Racismo',
+    useCase: 'Community Manager',
+    scenario: 'Comentario flaggeado',
+    icon: '❌',
+  },
+  {
+    text: 'En nuestra organización valoramos la igualdad de oportunidades. Todos merecen un trato justo sin importar su origen o identidad.',
+    isHate: false,
+    category: 'Contenido inclusivo',
+    useCase: 'LinkedIn',
+    scenario: 'Publicación empresarial',
+    icon: '💼',
   },
 ];
 
