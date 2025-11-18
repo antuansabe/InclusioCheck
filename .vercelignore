@@ -1,0 +1,18 @@
+# Test files
+test-gradio.mjs
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Development files
+.env.local
+.vscode
+.idea
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
