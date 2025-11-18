@@ -6,21 +6,45 @@ import type { TextExample, ModelMetrics } from './types';
  * Información del modelo
  */
 export const MODEL_INFO = {
-  name: 'SinOdio-BETO-HateSpeech',
+  name: 'SinOdio-BETO-HateSpeech-Detector-v3',
+  version: 'v3',
   owner: 'antonn-dromundo',
-  fullName: 'antonn-dromundo/SinOdio-BETO-HateSpeech',
-  huggingFaceUrl: 'https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech',
+  fullName: 'antonn-dromundo/SinOdio-BETO-HateSpeech-Detector-v3',
+  huggingFaceUrl: 'https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech-Detector-v3',
+  gradioSpace: 'antonn-dromundo/SinOdio-HateSpeech-Detector',
+  gradioSpaceUrl: 'https://huggingface.co/spaces/antonn-dromundo/SinOdio-HateSpeech-Detector',
 } as const;
 
 /**
- * Métricas del modelo
+ * Métricas del modelo v3
+ * Mejoras significativas respecto a v1:
+ * - Accuracy: +14.03% (de 77.82% a 91.85%)
+ * - F1 Score: +20.81% (de 0.6619 a 0.87)
+ * - Precision: +22.34% (de 60.96% a 83.30%)
+ * - Recall: +18.63% (de 72.40% a 91.03%)
  */
 export const MODEL_METRICS: ModelMetrics = {
-  accuracy: 82.02,
-  f1Score: 82.28,
-  precision: 77.73,
-  recall: 88.40,
+  accuracy: 91.85,
+  f1Score: 87.00,
+  precision: 83.30,
+  recall: 91.03,
 };
+
+/**
+ * Datos de entrenamiento del modelo v3
+ */
+export const TRAINING_DATA = {
+  totalExamples: 35000,
+  baseModel: 'BETO (BERT para español)',
+  parameters: '110M',
+  modelSize: '439 MB',
+  trainingTime: '~30 minutos',
+  hardware: 'NVIDIA T4 (Google Colab Pro)',
+  epochs: 2,
+  learningRate: 2e-5,
+  batchSize: 16,
+  maxSequenceLength: 128,
+} as const;
 
 /**
  * Ejemplos de texto con casos de uso reales
@@ -82,11 +106,17 @@ export const TEXT_EXAMPLES: TextExample[] = [
  */
 export const APP_CONFIG = {
   name: 'SinOdio',
-  description: 'Detector de lenguaje de odio con inteligencia artificial',
-  tagline: 'Tecnología para comunicar sin odio',
+  description: 'Detector de discurso de odio especializado en español latinoamericano con IA',
+  tagline: 'Protegiendo la dignidad humana con IA',
+  subtitle: 'Detecta hate speech explícito y sutil en español',
   author: 'Antonio Dromundo',
+  email: 'antuansabe@gmail.com',
   repository: 'https://github.com/antuansabe/SinOdio',
   maxTextLength: 500,
+  version: 'v3',
+  license: 'Apache 2.0',
+  language: 'es',
+  region: 'LATAM',
 } as const;
 
 /**

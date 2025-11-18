@@ -4,12 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**SinOdio** - A Next.js hate speech detection application using AI. Uses BETO (BERT in Spanish) fine-tuned model to identify offensive or discriminatory content in Spanish text in real-time.
+**SinOdio** - A Next.js hate speech detection application using AI. Uses BETO (BERT in Spanish) fine-tuned model specialized in **Latin American Spanish** to identify both explicit and **subtle/normalized** hate speech in real-time.
 
 **Author**: Antonio Dromundo (antuansabe@gmail.com)
-**Model**: antonn-dromundo/SinOdio-BETO-HateSpeech
-**Gradio Space**: antonn-dromundo/SinOdio-Demo
+**Model**: antonn-dromundo/SinOdio-BETO-HateSpeech-Detector-v3
+**Dataset**: antonn-dromundo/SinOdio-LATAM-Regional-HateSpeech
+**Gradio Space**: antonn-dromundo/SinOdio-HateSpeech-Detector
 **License**: Apache 2.0
+**Version**: v3 (November 2025)
 
 ## Tech Stack
 
@@ -50,7 +52,7 @@ npx shadcn@latest add [component-name] -y
 Create `.env.local` file with:
 ```bash
 HUGGINGFACE_API_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxx
-NEXT_PUBLIC_MODEL_ID=antonn-dromundo/SinOdio-BETO-HateSpeech
+NEXT_PUBLIC_MODEL_ID=antonn-dromundo/SinOdio-BETO-HateSpeech-Detector-v3
 ```
 
 **Note**: The current implementation uses Gradio Client API which connects directly to the HuggingFace Space without requiring API tokens.
@@ -67,7 +69,7 @@ NEXT_PUBLIC_MODEL_ID=antonn-dromundo/SinOdio-BETO-HateSpeech
 2. **API Route** → `src/app/api/analyze/route.ts`
    - **CRITICAL**: Uses Node.js runtime (NOT Edge Runtime)
    - Gradio Client requires Node.js runtime to function
-   - Connects to HuggingFace Gradio Space: `antonn-dromundo/SinOdio-Demo`
+   - Connects to HuggingFace Gradio Space: `antonn-dromundo/SinOdio-HateSpeech-Detector`
    - Parameter name must be `"texto"` (Spanish) as required by the Gradio Space
    - Returns `AnalysisResponse` from `src/types/api.ts`
 
@@ -144,7 +146,7 @@ src/
 1. **Gradio Client API Integration**
    - Uses `@gradio/client` v2.0.0-dev.1 (production dependency)
    - **IMPORTANT**: Must use Node.js runtime, NOT Edge Runtime
-   - Connects to Space: `antonn-dromundo/SinOdio-Demo`
+   - Connects to Space: `antonn-dromundo/SinOdio-HateSpeech-Detector`
    - Parameter name MUST be `"texto"` (not "text")
    - Response structure is `[{label, confidences}, message]`
 
@@ -166,8 +168,9 @@ src/
 
 5. **Constants & Configuration**:
    - All model info, metrics, and examples centralized in `src/lib/constants.ts`
-   - Model metrics: accuracy 82.02%, F1 82.28%, precision 77.73%, recall 88.40%
-   - 14,530 training examples
+   - **Model v3 metrics**: accuracy 91.85%, F1 87.00%, precision 83.30%, recall 91.03%
+   - **Training data**: ~35,000 examples (LATAM regional dataset)
+   - **Improvements over v1**: +14% accuracy, +21% F1, +22% precision, +19% recall
    - 6 pre-made text examples showcasing subtle hate speech cases
 
 ## Critical Implementation Notes
@@ -263,31 +266,82 @@ npm start      # Starts production server
 - No environment variables required for current Gradio implementation
 - Ensure build succeeds locally before deploying
 
-## Model Information
+## Model Information (v3)
 
-- **Base model**: BETO (BERT Spanish)
-- **Training data**: 14,530 Spanish text examples
+### Overview
+- **Version**: v3 (November 2025)
+- **Base model**: BETO (dariolopez/bert-base-spanish-wwm-cased)
+- **Specialization**: Latin American Spanish hate speech detection
 - **Task**: Binary classification (hate speech vs. no hate speech)
-- **HuggingFace Model**: https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech
-- **Gradio Space**: https://huggingface.co/spaces/antonn-dromundo/SinOdio-Demo
+- **Focus**: Detects both explicit and subtle/normalized discrimination
+- **HuggingFace Model**: https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech-Detector-v3
+- **Dataset**: https://huggingface.co/datasets/antonn-dromundo/SinOdio-LATAM-Regional-HateSpeech
+- **Gradio Space**: https://huggingface.co/spaces/antonn-dromundo/SinOdio-HateSpeech-Detector
+
+### Model Architecture
 - **Parameters**: 110M (BERT-base architecture)
-- **Metrics**: 82.02% accuracy, 82.28% F1, 77.73% precision, 88.40% recall
+- **Model size**: 439 MB
+- **Max sequence length**: 128 tokens
+- **Architecture**: BETO (BERT para español)
+
+### Training Details
+- **Training data**: ~35,000 Spanish text examples
+- **Dataset sources**:
+  - SinOdio-LATAM-Regional-HateSpeech (primary)
+  - Spanish Hate Speech Superset
+  - Synthetic balanced examples
+- **Regional coverage**: Chile, México, Argentina, Colombia, Perú
+- **Epochs**: 2
+- **Learning rate**: 2e-5
+- **Batch size**: 16
+- **Optimizer**: AdamW with 200 warmup steps
+- **Hardware**: NVIDIA T4 (Google Colab Pro)
+- **Training time**: ~30 minutes
+
+### Performance Metrics (v3)
+
+| Metric | v3 (Current) | v1 (Legacy) | Improvement |
+|--------|--------------|-------------|-------------|
+| **Accuracy** | 91.85% | 77.82% | +14.03% |
+| **F1 Score** | 87.00% | 66.19% | +20.81% |
+| **Precision** | 83.30% | 60.96% | +22.34% |
+| **Recall** | 91.03% | 72.40% | +18.63% |
+
+**Design Philosophy**: Prioritizes **Recall over Precision**
+- **High Recall (91%)**: Detects 91 of every 100 real hate speech cases
+- **Good Precision (83%)**: 83% of flagged content is actually hate speech
+- **Rationale**: Better to detect harmful content (avoid false negatives) than miss it
+
+### Detection Categories
+The model identifies discrimination related to:
+- Immigration and xenophobia
+- Gender and sexism
+- Sexual orientation and identity (LGBTQ+)
+- Race and ethnicity
+- Social class (aporophobia)
+- Disability (ableism)
+- Indigenous peoples
 
 ## Testing & Validation
 
-Tested with three categories:
-1. **Inclusive text**: 99.03% confidence (correctly identified)
-2. **Hate speech**: 90.62% confidence (correctly detected)
-3. **Ambiguous text**: 67.83% confidence (appropriate uncertainty)
+The v3 model has been tested across multiple scenarios:
 
-To test the API:
+### Test Categories
+1. **Inclusive text**: High confidence in detecting non-hateful content
+2. **Explicit hate speech**: Strong detection of obvious discrimination
+3. **Subtle hate speech**: Improved detection of normalized/disguised discrimination
+4. **Ambiguous text**: Appropriate uncertainty levels for edge cases
+
+### API Testing
+
+To test the API locally:
 ```bash
 curl -X POST http://localhost:3000/api/analyze \
   -H "Content-Type: application/json" \
   -d '{"text":"Me encanta trabajar con gente diversa"}'
 ```
 
-Expected response:
+Expected response format:
 ```json
 {
   "probabilities": {
@@ -299,3 +353,53 @@ Expected response:
   "confidence": 0.99
 }
 ```
+
+### Example Test Cases
+
+**Inclusive text:**
+```
+"los inmigrantes enriquecen nuestra cultura"
+Expected: NO HATE (~99% confidence)
+```
+
+**Subtle hate speech:**
+```
+"las mujeres simplemente son más emocionales, es biología"
+Expected: HATE (~99% confidence)
+```
+
+## Model Limitations
+
+### Known Limitations
+- **Context dependency**: May struggle with highly contextual or sarcastic content
+- **Regional variations**: Optimized for LATAM Spanish; may have lower accuracy for Spain Spanish
+- **Language evolution**: Hate speech evolves; model requires periodic updates
+- **False positives**: ~17% of flagged content may not be actual hate speech
+- **Not a replacement**: Should complement human moderation, not replace it
+
+### Recommended Usage
+- Use as part of a human-in-the-loop moderation system
+- Review flagged content before taking action
+- Update model periodically with new examples
+- Consider cultural context when interpreting results
+
+## Version History
+
+### v3 (November 2025) - **Current**
+- ✅ Major performance improvements (+21% F1 score)
+- ✅ Specialized training on LATAM regional dataset
+- ✅ Enhanced detection of subtle/normalized hate speech
+- ✅ Improved recall (91%) for better hate speech detection
+- ✅ Regional coverage: Chile, México, Argentina, Colombia, Perú
+- ✅ ~35,000 training examples
+
+### v2 (November 2025)
+- ✅ Integration of SinOdio-LATAM dataset
+- ✅ Significant improvement in subtle hate speech detection
+- ✅ Regional dialect support
+
+### v1 (October 2025)
+- ✅ Initial public release
+- ✅ F1 66.19%, Accuracy 77.82%
+- ✅ Basic hate speech detection
+- ✅ 14,530 training examples
