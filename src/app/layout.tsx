@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://inclusiocheck.vercel.app", // Actualizar después del deploy
+    url: "https://sin-odio.vercel.app",
     title: APP_CONFIG.name,
     description: APP_CONFIG.description,
     siteName: APP_CONFIG.name,
@@ -38,7 +38,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: APP_CONFIG.name,
     description: APP_CONFIG.description,
-    creator: "@tu_twitter", // Actualizar con tu handle
   },
   robots: {
     index: true,
