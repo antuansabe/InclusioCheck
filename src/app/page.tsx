@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
-import { MODEL_METRICS } from "@/lib/constants";
+import { MODEL_METRICS, TRAINING_DATA } from "@/lib/constants";
 import MetricsCard from "@/components/shared/MetricsCard";
 import Analyzer from "@/components/features/Analyzer";
 import ExamplesGrid from "@/components/features/ExamplesGrid";
@@ -45,7 +45,7 @@ export default function Home() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
-              Tecnología de IA entrenada con +14,000 ejemplos para identificar
+              Tecnología de IA entrenada con ~{TRAINING_DATA.totalExamples.toLocaleString('en-US')} ejemplos para identificar
               contenido ofensivo o discriminatorio en español
             </p>
 
@@ -57,7 +57,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-background border text-xs md:text-sm">
                 <CheckCircle2 className="h-4 w-4 text-green-500" />
-                <span>82% Precisión</span>
+                <span>{MODEL_METRICS.f1Score}% F1</span>
               </div>
               <div className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-background border text-xs md:text-sm">
                 <Target className="h-4 w-4 text-blue-500" />
@@ -82,11 +82,14 @@ export default function Home() {
             {/* Metrics Cards */}
             <div className="space-y-3 sm:space-y-4">
               <h3 className="font-semibold text-lg">Métricas del Modelo</h3>
+              <p className="text-xs text-muted-foreground">
+                Autorreportadas, medidas en la partición de prueba del propio dataset de entrenamiento. Aún sin evaluación en un corpus externo: úsalo con revisión humana.
+              </p>
               <MetricsCard
                 title="Accuracy"
                 value={MODEL_METRICS.accuracy}
                 icon={<TrendingUp className="h-4 w-4" />}
-                description="Precisión general del modelo"
+                description="Proporción de aciertos en la partición de prueba"
               />
               <MetricsCard
                 title="F1 Score"
@@ -129,11 +132,11 @@ export default function Home() {
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-6 sm:gap-8 text-center">
             <div className="py-4">
-              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">14,530</div>
+              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">~{TRAINING_DATA.totalExamples.toLocaleString('en-US')}</div>
               <div className="text-sm sm:text-base text-muted-foreground">Ejemplos de Entrenamiento</div>
             </div>
             <div className="py-4">
-              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">82.3%</div>
+              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">{MODEL_METRICS.f1Score}%</div>
               <div className="text-sm sm:text-base text-muted-foreground">F1 Score</div>
             </div>
             <div className="py-4">
