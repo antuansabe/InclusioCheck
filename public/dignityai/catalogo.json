@@ -19,7 +19,7 @@
       "sellos": ["datos_sinteticos", "sin_validacion_comunitaria"],
       "baseline_f1_subcategorias_no_vistas": 0.779,
       "url": "https://github.com/antuansabe/DignityAI-Racismo-LATAM",
-      "archivos": "https://github.com/antuansabe/DignityAI-Racismo-LATAM/tree/main/v1.1"
+      "archivos": "https://github.com/antuansabe/DignityAI-Racismo-LATAM/tree/HEAD/v1.1"
     },
     {
       "id": "dignityai-clasismo-latam",
@@ -36,7 +36,7 @@
       "sellos": ["datos_sinteticos", "sin_validacion_comunitaria"],
       "baseline_f1_subcategorias_no_vistas": 0.913,
       "url": "https://github.com/antuansabe/DignityAI-Classism-LATAM",
-      "archivos": "https://github.com/antuansabe/DignityAI-Classism-LATAM/tree/main/v1.1"
+      "archivos": "https://github.com/antuansabe/DignityAI-Classism-LATAM/tree/HEAD/v1.1"
     },
     {
       "id": "machismodetect",
