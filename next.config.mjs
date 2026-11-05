@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  // Hub estático de DignityAI servido desde public/dignityai
+  async rewrites() {
+    return [{ source: '/dignityai', destination: '/dignityai/index.html' }];
+  },
+  async redirects() {
+    return [{ source: '/dignityai/', destination: '/dignityai', permanent: false }];
+  },
 };
 
 export default nextConfig;

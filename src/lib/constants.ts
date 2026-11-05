@@ -112,7 +112,7 @@ export const APP_CONFIG = {
   author: 'Antonio Dromundo',
   email: 'antuansabe@gmail.com',
   repository: 'https://github.com/antuansabe/InclusioCheck',
-  hub: 'https://dignityai.vercel.app',
+  hub: 'https://sin-odio.vercel.app/dignityai',
   maxTextLength: 500,
   version: 'v3',
   license: 'Apache 2.0',

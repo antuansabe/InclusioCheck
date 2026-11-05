@@ -4,6 +4,6 @@ Sitio estático (HTML + JSON) que reúne los datasets, modelos y apps de Dignity
 
 - `index.html`: el sitio completo, sin dependencias ni build.
 - `catalogo.json`: catálogo legible por máquina de los recursos.
-- Despliegue: proyecto de Vercel `dignityai` con *Root Directory* = `hub`.
+- Se publica en https://sin-odio.vercel.app/dignityai (Next.js sirve `public/` y `next.config.mjs` reescribe `/dignityai`).
 
 Vive aquí temporalmente; la idea es moverlo a su propio repositorio `DignityAI`.
