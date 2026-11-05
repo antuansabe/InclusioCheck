@@ -1,7 +1,7 @@
 {
   "nombre": "DignityAI",
   "descripcion": "Recursos abiertos para detectar y estudiar discriminación en el español de América Latina",
-  "actualizado": "2026-11-04",
+  "actualizado": "2026-11-05",
   "contacto": "antuansabe@gmail.com",
   "recursos": [
     {
@@ -12,14 +12,26 @@
       "textos_unicos": 22769,
       "discriminatorios": 21485,
       "contraste": 1284,
-      "paises": ["México", "Argentina", "Colombia", "Chile", "Perú"],
+      "paises": [
+        "México",
+        "Argentina",
+        "Colombia",
+        "Chile",
+        "Perú"
+      ],
       "categorias": 5,
       "subcategorias": 21,
       "licencia": "CC-BY-NC-SA-4.0",
-      "sellos": ["datos_sinteticos", "sin_validacion_comunitaria"],
+      "sellos": [
+        "datos_sinteticos"
+      ],
       "baseline_f1_subcategorias_no_vistas": 0.779,
       "url": "https://github.com/antuansabe/DignityAI-Racismo-LATAM",
-      "archivos": "https://github.com/antuansabe/DignityAI-Racismo-LATAM/tree/HEAD/v1.1"
+      "archivos": "https://github.com/antuansabe/DignityAI-Racismo-LATAM/tree/HEAD/v1.1",
+      "etiquetas_claras_revision": 0.875,
+      "reconocido_por_modelo_real_uba": 0.303,
+      "uso_recomendado": "evaluacion",
+      "hf": "https://huggingface.co/datasets/antonn-dromundo/DignityAI-Racismo-LATAM"
     },
     {
       "id": "dignityai-clasismo-latam",
@@ -29,44 +41,96 @@
       "textos_unicos": 19187,
       "discriminatorios": 18320,
       "contraste": 867,
-      "paises": ["México", "Argentina", "Colombia", "Chile", "España"],
+      "paises": [
+        "México",
+        "Argentina",
+        "Colombia",
+        "Chile",
+        "España"
+      ],
       "categorias": 6,
       "subcategorias": 18,
       "licencia": "CC-BY-NC-SA-4.0",
-      "sellos": ["datos_sinteticos", "sin_validacion_comunitaria"],
+      "sellos": [
+        "datos_sinteticos"
+      ],
       "baseline_f1_subcategorias_no_vistas": 0.913,
       "url": "https://github.com/antuansabe/DignityAI-Classism-LATAM",
-      "archivos": "https://github.com/antuansabe/DignityAI-Classism-LATAM/tree/HEAD/v1.1"
+      "archivos": "https://github.com/antuansabe/DignityAI-Classism-LATAM/tree/HEAD/v1.1",
+      "etiquetas_claras_revision": 0.75,
+      "reconocido_por_modelo_real_uba": 0.113,
+      "uso_recomendado": "evaluacion",
+      "hf": "https://huggingface.co/datasets/antonn-dromundo/DignityAI-Clasismo-LATAM"
     },
     {
       "id": "machismodetect",
       "tipo": "dataset",
       "origen": "sintetico_llm",
-      "pares_segun_ficha": 18000,
-      "paises": ["México", "España", "Argentina", "Colombia", "Chile"],
+      "paises": [
+        "México",
+        "España",
+        "Argentina",
+        "Colombia",
+        "Chile"
+      ],
       "licencia": "CC-BY-NC-SA-4.0",
-      "sellos": ["datos_sinteticos", "auditoria_pendiente"],
-      "url": "https://huggingface.co/datasets/antonn-dromundo/MachismoDetect"
+      "sellos": [
+        "depende_del_contexto"
+      ],
+      "url": "https://huggingface.co/datasets/antonn-dromundo/MachismoDetect",
+      "version": "1.1.0",
+      "textos_unicos": 15834,
+      "discriminatorios": 15739,
+      "contraste": 95,
+      "etiquetas_claras_revision": 0.425,
+      "reconocido_por_modelo_real_uba": 0.073,
+      "fuga_test_v1_0": 0.542
     },
     {
       "id": "sinodio-latam-regional",
       "tipo": "dataset",
-      "origen": "en_revision",
-      "filas_aprox": 20000,
-      "paises": ["Chile", "México", "Argentina", "Colombia", "Perú"],
-      "sellos": ["auditoria_pendiente"],
-      "url": "https://huggingface.co/datasets/antonn-dromundo/SinOdio-LATAM-Regional-HateSpeech"
+      "origen": "sintetico",
+      "paises": [
+        "Chile",
+        "México",
+        "Argentina",
+        "Colombia",
+        "Perú"
+      ],
+      "sellos": [
+        "etiquetas_no_confiables"
+      ],
+      "url": "https://huggingface.co/datasets/antonn-dromundo/SinOdio-LATAM-Regional-HateSpeech",
+      "version": "1.1.0",
+      "textos_unicos": 4668,
+      "filas_v1_0": 20000,
+      "etiquetas_claras_revision": 0.06,
+      "etiquetas_no_discriminatorias_revision": 0.64,
+      "fuga_test_v1_0": 0.843,
+      "licencia": "CC-BY-NC-SA-4.0"
     },
     {
       "id": "sinodio-beto-v3",
       "tipo": "modelo",
       "base": "BETO",
       "parametros": "110M",
-      "metricas_autorreportadas": {"exactitud": 0.9185, "f1": 0.87, "precision": 0.833, "exhaustividad": 0.9103},
-      "evaluacion_externa": null,
+      "metricas_autorreportadas": {
+        "exactitud": 0.9185,
+        "f1": 0.87,
+        "precision": 0.833,
+        "exhaustividad": 0.9103
+      },
+      "evaluacion_externa": {
+        "dataset": "Paul/hatecheck-spanish",
+        "exactitud": 0.712,
+        "f1_macro": 0.686
+      },
       "licencia": "Apache-2.0",
-      "sellos": ["metricas_autorreportadas"],
-      "url": "https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech-Detector-v3"
+      "sellos": [
+        "muchas_falsas_alarmas"
+      ],
+      "url": "https://huggingface.co/antonn-dromundo/SinOdio-BETO-HateSpeech-Detector-v3",
+      "falsas_alarmas_frases_inclusivas_raza": 0.699
     },
     {
       "id": "sinodio-app",
@@ -75,5 +139,7 @@
       "codigo": "https://github.com/antuansabe/InclusioCheck",
       "space": "https://huggingface.co/spaces/antonn-dromundo/SinOdio-HateSpeech-Detector"
     }
-  ]
+  ],
+  "validacion": "https://huggingface.co/datasets/antonn-dromundo/DignityAI-Validacion",
+  "coleccion_hf": "https://huggingface.co/collections/antonn-dromundo/dignityai-6aec99436870a5f491995433"
 }
