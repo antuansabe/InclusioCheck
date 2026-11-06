@@ -1,0 +1,27 @@
+{
+  "nombre": "DignityCheck-LATAM",
+  "version": "0.1.0",
+  "descripcion": "Casos difíciles que NO son odio: frases que mencionan a grupos vulnerables sin atacarlos. Para medir el sobre-marcado (falsos positivos) de los detectores de discurso de odio en español.",
+  "n": 56,
+  "etiqueta": "es_odio = 0 en todos los casos (por diseño)",
+  "grupos": [
+    "afro",
+    "clase",
+    "discapacidad",
+    "indigena",
+    "lgbt",
+    "migrante",
+    "mujer"
+  ],
+  "tipos": [
+    "contradiscurso",
+    "denuncia",
+    "derechos",
+    "inclusivo",
+    "neutral",
+    "pregunta"
+  ],
+  "licencia": "CC-BY-4.0",
+  "uso": "Un buen detector NO debería marcar estas frases como odio. El % marcado es su tasa de falsos positivos sobre identidad.",
+  "actualizado": "2026-11-06"
+}

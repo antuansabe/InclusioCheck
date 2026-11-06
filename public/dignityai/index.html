@@ -170,6 +170,9 @@ footer p{max-width:70ch}
 .hallazgos p{font-size:.95rem;margin:.4rem 0 0}
 .cierre{font-size:1.15rem;max-width:60ch}
 @media (max-width:760px){.hallazgos{grid-template-columns:1fr 1fr}}
+.dignitycheck{margin:2.5rem 0 0;border-left:3px solid var(--verde);padding-left:1.1rem;max-width:var(--measure)}
+.dignitycheck h3{margin-bottom:.3rem}
+.dc-links{display:flex;gap:1.1rem;font-family:var(--sans);font-weight:600}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Dataset","name":"DignityAI","alternateName":"DignityAI-Espejo",
@@ -413,6 +416,11 @@ footer p{max-width:70ch}
         <h3>Evaluación externa del modelo</h3>
         <p>En HateCheck-ES, casos de prueba escritos por especialistas, SinOdio v3 acierta 71%, por encima del BETO de la UBA (67%), pero lejos del 91.85% que se reportaba.</p>
       </div>
+    </div>
+    <div class="dignitycheck">
+      <h3>DignityCheck-LATAM: un test que puedes correr</h3>
+      <p>Convertimos el hallazgo "la IA confunde nombrar con atacar" en un banco reutilizable: 56 frases que mencionan a grupos vulnerables <b>sin</b> atacarlos (inclusivas, de contra-discurso, denuncias, menciones neutrales). Un buen detector no debería marcar ninguna como odio; el porcentaje que marque es su tasa de falsos positivos sobre identidad.</p>
+      <p class="dc-links"><a href="/dignityai/dignitycheck/dignitycheck_v0.1.csv" download>Descargar CSV</a><a href="/dignityai/dignitycheck/dignitycheck_v0.1.json" download>JSON</a></p>
     </div>
     <details class="medicion">
       <summary>Ver las cifras completas</summary>

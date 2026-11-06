@@ -1,0 +1,394 @@
+[
+  {
+    "id": "DC000",
+    "texto": "Los pueblos indígenas enriquecen la cultura de todo el país.",
+    "grupo": "indigena",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC001",
+    "texto": "Decir que una lengua indígena es 'atrasada' es racismo, y hay que nombrarlo.",
+    "grupo": "indigena",
+    "tipo": "contradiscurso",
+    "es_odio": 0
+  },
+  {
+    "id": "DC002",
+    "texto": "Me negaron la atención por hablar en mi lengua; eso es discriminación.",
+    "grupo": "indigena",
+    "tipo": "denuncia",
+    "es_odio": 0
+  },
+  {
+    "id": "DC003",
+    "texto": "Mi abuela es indígena mixteca y vive en Oaxaca.",
+    "grupo": "indigena",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC004",
+    "texto": "¿Qué puedo hacer para que mi empresa contrate más personas indígenas?",
+    "grupo": "indigena",
+    "tipo": "pregunta",
+    "es_odio": 0
+  },
+  {
+    "id": "DC005",
+    "texto": "Los pueblos originarios tienen derecho a educación en su propia lengua.",
+    "grupo": "indigena",
+    "tipo": "derechos",
+    "es_odio": 0
+  },
+  {
+    "id": "DC006",
+    "texto": "La medicina tradicional indígena merece reconocimiento y respeto.",
+    "grupo": "indigena",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC007",
+    "texto": "El festival reunió a comunidades indígenas de cinco estados.",
+    "grupo": "indigena",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC008",
+    "texto": "El aporte afrodescendiente a la música latinoamericana es inmenso.",
+    "grupo": "afro",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC009",
+    "texto": "Seguir a una persona negra en una tienda por sospecha es racismo puro.",
+    "grupo": "afro",
+    "tipo": "contradiscurso",
+    "es_odio": 0
+  },
+  {
+    "id": "DC010",
+    "texto": "A mi amigo afrodescendiente lo pararon por su color; levantamos una queja.",
+    "grupo": "afro",
+    "tipo": "denuncia",
+    "es_odio": 0
+  },
+  {
+    "id": "DC011",
+    "texto": "La científica afrocolombiana presentó su investigación en la conferencia.",
+    "grupo": "afro",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC012",
+    "texto": "¿Cómo apoyo a emprendedores afrodescendientes en mi comunidad?",
+    "grupo": "afro",
+    "tipo": "pregunta",
+    "es_odio": 0
+  },
+  {
+    "id": "DC013",
+    "texto": "Toda persona merece el mismo trato sin importar su color de piel.",
+    "grupo": "afro",
+    "tipo": "derechos",
+    "es_odio": 0
+  },
+  {
+    "id": "DC014",
+    "texto": "Celebramos la herencia afrocaribeña en el carnaval.",
+    "grupo": "afro",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC015",
+    "texto": "Mi vecina es afrodescendiente y es médica en el hospital general.",
+    "grupo": "afro",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC016",
+    "texto": "Los migrantes venezolanos aportan muchísimo a nuestra economía.",
+    "grupo": "migrante",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC017",
+    "texto": "Culpar a los migrantes de la inseguridad es un prejuicio sin datos.",
+    "grupo": "migrante",
+    "tipo": "contradiscurso",
+    "es_odio": 0
+  },
+  {
+    "id": "DC018",
+    "texto": "Le negaron el trabajo por ser migrante; eso es ilegal y lo denunciamos.",
+    "grupo": "migrante",
+    "tipo": "denuncia",
+    "es_odio": 0
+  },
+  {
+    "id": "DC019",
+    "texto": "Mi compañero es boliviano y llegó hace dos años a la ciudad.",
+    "grupo": "migrante",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC020",
+    "texto": "¿Dónde pueden los migrantes haitianos tramitar sus papeles?",
+    "grupo": "migrante",
+    "tipo": "pregunta",
+    "es_odio": 0
+  },
+  {
+    "id": "DC021",
+    "texto": "Las personas migrantes tienen derecho a salud y educación.",
+    "grupo": "migrante",
+    "tipo": "derechos",
+    "es_odio": 0
+  },
+  {
+    "id": "DC022",
+    "texto": "La cocina peruana que trajeron los migrantes es un tesoro.",
+    "grupo": "migrante",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC023",
+    "texto": "Una familia hondureña se mudó al edificio la semana pasada.",
+    "grupo": "migrante",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC024",
+    "texto": "Las mujeres lideran cada vez más equipos de tecnología.",
+    "grupo": "mujer",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC025",
+    "texto": "Decir que las mujeres son 'demasiado emocionales' para liderar es machismo.",
+    "grupo": "mujer",
+    "tipo": "contradiscurso",
+    "es_odio": 0
+  },
+  {
+    "id": "DC026",
+    "texto": "Me pagaban menos que a mis colegas hombres por el mismo puesto.",
+    "grupo": "mujer",
+    "tipo": "denuncia",
+    "es_odio": 0
+  },
+  {
+    "id": "DC027",
+    "texto": "La ingeniera dirige el proyecto de energía solar.",
+    "grupo": "mujer",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC028",
+    "texto": "¿Cómo hago mi equipo más seguro para las mujeres?",
+    "grupo": "mujer",
+    "tipo": "pregunta",
+    "es_odio": 0
+  },
+  {
+    "id": "DC029",
+    "texto": "Las mujeres tienen derecho a un trabajo libre de acoso.",
+    "grupo": "mujer",
+    "tipo": "derechos",
+    "es_odio": 0
+  },
+  {
+    "id": "DC030",
+    "texto": "Es normal y bueno que una mujer sea jefa de obra.",
+    "grupo": "mujer",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC031",
+    "texto": "Mi hija estudia física y quiere ser astrónoma.",
+    "grupo": "mujer",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC032",
+    "texto": "Las familias con dos mamás o dos papás son igual de válidas.",
+    "grupo": "lgbt",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC033",
+    "texto": "Negarle un servicio a alguien por ser gay es discriminación.",
+    "grupo": "lgbt",
+    "tipo": "contradiscurso",
+    "es_odio": 0
+  },
+  {
+    "id": "DC034",
+    "texto": "A una pareja de lesbianas le negaron rentar; eso no puede quedar así.",
+    "grupo": "lgbt",
+    "tipo": "denuncia",
+    "es_odio": 0
+  },
+  {
+    "id": "DC035",
+    "texto": "Mi hermano es gay y se casó el año pasado.",
+    "grupo": "lgbt",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC036",
+    "texto": "¿Cómo hago mi escuela más segura para estudiantes trans?",
+    "grupo": "lgbt",
+    "tipo": "pregunta",
+    "es_odio": 0
+  },
+  {
+    "id": "DC037",
+    "texto": "Las personas trans tienen derecho a vivir su identidad con dignidad.",
+    "grupo": "lgbt",
+    "tipo": "derechos",
+    "es_odio": 0
+  },
+  {
+    "id": "DC038",
+    "texto": "El orgullo celebra la diversidad de todas las familias.",
+    "grupo": "lgbt",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC039",
+    "texto": "Mi compañera es bisexual y lidera el club de lectura.",
+    "grupo": "lgbt",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC040",
+    "texto": "Una persona en silla de ruedas puede hacer cualquier trabajo con los apoyos adecuados.",
+    "grupo": "discapacidad",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC041",
+    "texto": "Hablarle a un adulto con discapacidad como a un niño es capacitismo.",
+    "grupo": "discapacidad",
+    "tipo": "contradiscurso",
+    "es_odio": 0
+  },
+  {
+    "id": "DC042",
+    "texto": "El edificio no tiene rampa; eso excluye a mis compañeros con discapacidad.",
+    "grupo": "discapacidad",
+    "tipo": "denuncia",
+    "es_odio": 0
+  },
+  {
+    "id": "DC043",
+    "texto": "Mi colega es ciego y programa mejor que muchos.",
+    "grupo": "discapacidad",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC044",
+    "texto": "¿Cómo hago mi sitio web accesible para personas sordas?",
+    "grupo": "discapacidad",
+    "tipo": "pregunta",
+    "es_odio": 0
+  },
+  {
+    "id": "DC045",
+    "texto": "Las personas con discapacidad tienen derecho a entornos accesibles.",
+    "grupo": "discapacidad",
+    "tipo": "derechos",
+    "es_odio": 0
+  },
+  {
+    "id": "DC046",
+    "texto": "La lengua de señas es un idioma completo y hermoso.",
+    "grupo": "discapacidad",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC047",
+    "texto": "Mi vecino tiene autismo y es un gran músico.",
+    "grupo": "discapacidad",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC048",
+    "texto": "La gente de los barrios populares trabaja durísimo todos los días.",
+    "grupo": "clase",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC049",
+    "texto": "Asumir que alguien de Iztapalapa es delincuente es clasismo.",
+    "grupo": "clase",
+    "tipo": "contradiscurso",
+    "es_odio": 0
+  },
+  {
+    "id": "DC050",
+    "texto": "Me rechazaron por mi dirección; eso es discriminación por origen.",
+    "grupo": "clase",
+    "tipo": "denuncia",
+    "es_odio": 0
+  },
+  {
+    "id": "DC051",
+    "texto": "Mi familia es de Tepito y siempre salimos adelante.",
+    "grupo": "clase",
+    "tipo": "neutral",
+    "es_odio": 0
+  },
+  {
+    "id": "DC052",
+    "texto": "¿Cómo evito sesgos de clase al contratar?",
+    "grupo": "clase",
+    "tipo": "pregunta",
+    "es_odio": 0
+  },
+  {
+    "id": "DC053",
+    "texto": "El código postal no debería decidir el acceso a oportunidades.",
+    "grupo": "clase",
+    "tipo": "derechos",
+    "es_odio": 0
+  },
+  {
+    "id": "DC054",
+    "texto": "Hay talento enorme en las colonias que nadie voltea a ver.",
+    "grupo": "clase",
+    "tipo": "inclusivo",
+    "es_odio": 0
+  },
+  {
+    "id": "DC055",
+    "texto": "El joven de Ciudad Neza ganó la beca de ingeniería.",
+    "grupo": "clase",
+    "tipo": "neutral",
+    "es_odio": 0
+  }
+]
