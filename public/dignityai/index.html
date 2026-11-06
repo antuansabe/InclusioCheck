@@ -3,10 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DignityAI: Datos abiertos sobre discriminación en el español de América Latina</title>
-<meta name="description" content="Datasets, modelos y herramientas abiertas para detectar y estudiar racismo, clasismo, machismo y discurso de odio en español latinoamericano. Para organizaciones civiles, academia y periodismo.">
-<meta property="og:title" content="DignityAI">
-<meta property="og:description" content="Datos abiertos sobre discriminación en el español de América Latina, con sus limitaciones a la vista.">
+<title>DignityAI — ¿La IA entiende a América Latina? Auditoría de sesgo cultural en español</title>
+<meta name="description" content="Auditoría abierta de qué tan justa es la IA con América Latina: datasets, modelos y evidencia de sesgo cultural en el español latinoamericano. Para academia, organizaciones civiles y periodismo.">
+<meta property="og:title" content="DignityAI — ¿La IA entiende a América Latina?">
+<meta property="og:description" content="La misma frase neutral se clasifica como racista hasta 120 veces más según a quién nombres. Auditoría abierta de sesgo de IA en español latinoamericano.">
+<meta property="og:image" content="https://sin-odio.vercel.app/dignityai/espejo.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://sin-odio.vercel.app/dignityai">
 <link rel="canonical" href="https://sin-odio.vercel.app/dignityai">
@@ -110,7 +112,7 @@ section{padding:clamp(3rem,7vw,5.5rem) 0;border-bottom:1px solid var(--linea)}
 .ficha .links{margin-top:auto;padding-top:.6rem;display:flex;gap:1.1rem;flex-wrap:wrap;font-family:var(--sans);font-size:.95rem;font-weight:600}
 .cifra-clave{font-family:var(--sans);font-weight:800;font-stretch:80%}
 
-details.medicion{margin:2rem 0 0;border:1px solid var(--linea);background:#fff;padding:1rem 1.25rem;max-width:var(--measure)}
+details.medicion{margin:2rem 0 0;border:1px solid var(--linea);background:#fff;padding:1rem 1.25rem;max-width:var(--measure);overflow-x:auto}
 details.medicion summary{font-family:var(--sans);font-weight:700;cursor:pointer}
 details.medicion table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.92rem;margin-top:.8rem;font-variant-numeric:tabular-nums}
 details.medicion th,details.medicion td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--linea)}
@@ -158,7 +160,25 @@ footer p{max-width:70ch}
   .dir td[data-l]::before{content:attr(data-l) ": ";font-family:var(--sans);color:var(--gris);font-size:.85rem}
 }
 @media (max-width:520px){.constancia{width:66px;height:66px}.constancia b{font-size:1.3rem}.ruta{grid-template-columns:1fr}.ficha header{flex-direction:column-reverse;gap:.6rem}.sello{--s:80px}.sello.sm{--s:66px}}
+.kicker{font-family:var(--sans);font-weight:700;font-size:.9rem;letter-spacing:.02em;color:var(--verde);margin:0 0 1rem;text-transform:uppercase}
+.figura{margin:0 0 2rem;border:1px solid var(--linea);background:#fff;padding:1rem}
+.figura img{width:100%;height:auto;display:block}
+.figura figcaption{font-family:var(--sans);font-size:.9rem;color:var(--gris);margin-top:.7rem}
+.hallazgos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin:0 0 1.5rem}
+.hallazgos div{border-top:3px solid var(--verde);padding-top:.6rem}
+.hallazgos b{font-family:var(--sans);font-weight:900;font-stretch:75%;font-size:2.4rem;color:var(--tinta);display:block;line-height:1;letter-spacing:-.02em}
+.hallazgos p{font-size:.95rem;margin:.4rem 0 0}
+.cierre{font-size:1.15rem;max-width:60ch}
+@media (max-width:760px){.hallazgos{grid-template-columns:1fr 1fr}}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset","name":"DignityAI","alternateName":"DignityAI-Espejo",
+"description":"Auditoría abierta de sesgo cultural de modelos de IA en el español de América Latina: datasets de racismo, clasismo, machismo y discurso de odio, con validación externa y pruebas contrafactuales.",
+"url":"https://sin-odio.vercel.app/dignityai","inLanguage":"es","keywords":["sesgo algorítmico","justicia en IA","discurso de odio","español","América Latina","racismo","clasismo","responsible AI","counterfactual fairness"],
+"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"creator":{"@type":"Person","name":"Antonio Dromundo","url":"https://huggingface.co/antonn-dromundo"},
+"distribution":[{"@type":"DataDownload","encodingFormat":"CSV","contentUrl":"https://huggingface.co/datasets/antonn-dromundo/DignityAI-Espejo"}]}
+</script>
 </head>
 <body>
 <a class="skip" href="#catalogo">Saltar al catálogo</a>
@@ -166,6 +186,7 @@ footer p{max-width:70ch}
   <nav class="top" aria-label="Principal">
     <a class="logo" href="/dignityai">DignityAI</a>
     <ul>
+      <li><a href="#espejo">El espejo</a></li>
       <li><a href="#manifiesto">Manifiesto</a></li>
       <li><a href="#catalogo">Catálogo</a></li>
       <li><a href="#validacion">Validación</a></li>
@@ -176,24 +197,38 @@ footer p{max-width:70ch}
   </nav>
 
   <header class="hero">
-    <h1>Datos abiertos para nombrar la discriminación en nuestro español</h1>
-    <p class="lede">DignityAI reúne datasets, modelos y herramientas para detectar y estudiar racismo, clasismo, machismo y discurso de odio en el español de América Latina. Es gratuito para organizaciones civiles, academia y periodismo, y cada recurso está contrastado con datos reales y dice lo que sí está medido y lo que todavía no.</p>
-    <div class="hero-sellos" aria-label="Ejemplo de sellos y constancias">
-      <div class="sello" role="img" aria-label="Sello: datos sintéticos"><span><span>Datos sintéticos</span></span></div>
-      <div class="constancia grande" role="img" aria-label="88% de etiquetas claras"><b>88%</b><span>etiquetas claras</span></div>
-      <p>Como en el etiquetado de alimentos: el sello negro advierte y el recuadro verde dice qué medimos.</p>
-    </div>
+    <p class="kicker">Auditoría abierta de sesgo cultural de IA</p>
+    <h1>¿La inteligencia artificial entiende a América Latina?</h1>
+    <p class="lede">La misma frase neutral —"mi nuevo vecino es ___"— un modelo de IA la marca como racista hasta <b>120 veces más</b> según a quién nombres. DignityAI audita qué tan justa es la IA con el español que hablan 600 millones de personas, y abre los datos, los modelos y la evidencia para academia, organizaciones civiles y periodismo.</p>
     <div class="ctas">
       <a class="btn primary" href="#catalogo">Ver el catálogo</a>
       <a class="btn" href="#directorio">Buscar datos reales</a>
     </div>
   </header>
 
+  <section id="espejo" aria-labelledby="h-esp">
+    <div class="intro">
+      <h2 id="h-esp">El espejo: el sesgo que la IA proyecta</h2>
+      <p>Tomamos 11 frases neutrales y solo cambiamos el grupo nombrado. La frase es idéntica; cualquier diferencia en la puntuación es sesgo del modelo, no del texto. Medimos la probabilidad de "racismo" que asignan tres detectores de odio en español.</p>
+    </div>
+    <figure class="figura">
+      <img src="/dignityai/espejo.png" alt="Gráfica: la misma frase se clasifica como racista con probabilidad muy distinta según el color de piel o la nacionalidad nombrada." loading="lazy">
+      <figcaption>Probabilidad de "racismo" del detector de la UBA sobre frases neutrales. Los tres modelos coinciden en el orden del eje de color (ρ=0.74).</figcaption>
+    </figure>
+    <div class="hallazgos">
+      <div><b>122×</b><p>Diferencia entre la frase más y la menos marcada, solo por cambiar el color de piel de la persona.</p></div>
+      <div><b>50%</b><p>De las frases neutrales sobre una persona mestiza se marcan como odio; 0% cuando es de piel clara.</p></div>
+      <div><b>70%</b><p>De las frases <i>inclusivas</i> sobre raza las marca como odio: confunde nombrar con atacar.</p></div>
+      <div><b>41%</b><p>Del clasismo real es lo único que detecta: se queda callada cuando el daño es sutil.</p></div>
+    </div>
+    <p class="cierre">La IA se alarma cuando nombras a quien no debería, y se calla cuando el daño es real. <a href="https://huggingface.co/datasets/antonn-dromundo/DignityAI-Espejo">Lee la auditoría completa y reprodúcela →</a></p>
+  </section>
+
   <section id="manifiesto" aria-labelledby="h-man">
     <div class="manifiesto">
       <div>
         <h2 id="h-man">Por qué existe</h2>
-        <p>Casi todo lo que se ha construido para detectar discurso de odio se hizo en inglés. En español hay mucho menos, y casi nada distingue entre el “naco” de la Ciudad de México, el “roto” de Santiago o el “cabecita negra” de Buenos Aires.</p>
+        <p>Casi todo lo que se ha construido para entender el lenguaje —y para moderarlo con IA— se hizo en inglés. En español hay mucho menos, y casi nada distingue entre el “naco” de la Ciudad de México, el “roto” de Santiago o el “cabecita negra” de Buenos Aires.</p>
         <p>Las organizaciones que documentan discriminación hacen ese trabajo a mano. DignityAI quiere darles insumos abiertos y honestos para hacerlo mejor, y darle a la academia material para medir qué tan bien entienden los modelos nuestras formas de discriminar.</p>
       </div>
       <ol>
@@ -483,7 +518,8 @@ print(clf("Los inmigrantes enriquecen nuestra cultura"))</code></pre>
     <ol class="ruta">
       <li class="hecho"><p class="cuando">Noviembre 2026</p><h3>Limpieza y v1.1</h3><p>Cifras verificadas, duplicados fuera, particiones sin fuga y este catálogo.</p></li>
       <li class="hecho"><p class="cuando">Noviembre 2026</p><h3>Validación externa</h3><p>Contraste con 57,000 comentarios reales, HateCheck-ES y revisión de etiquetas.</p></li>
-      <li><p class="cuando">Siguiente</p><h3>DignityCheck-LATAM</h3><p>Un banco de pruebas con los textos de etiqueta clara, con contexto y por país, para evaluar LLMs y detectores.</p></li>
+      <li class="hecho"><p class="cuando">Noviembre 2026</p><h3>Espejo: auditoría de sesgo</h3><p>Pruebas contrafactuales sobre tres modelos; evidencia de sesgo por color y nacionalidad.</p></li>
+      <li><p class="cuando">Siguiente</p><h3>Auditar los LLM de frontera</h3><p>Aplicar el Espejo a los modelos que millones usan a diario, y sumar ejes de género, discapacidad y lenguas.</p></li>
       <li><p class="cuando">Con aliados</p><h3>Validación comunitaria</h3><p>Anotación del kit por personas de las comunidades afectadas, y re-etiquetado de SinOdio-LATAM.</p></li>
     </ol>
   </section>
