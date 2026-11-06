@@ -1,0 +1,9 @@
+{
+  "probado_en": "gemini.google.com (Gemini Flash) y chatgpt.com (modelo Medium), vía navegador con sesión del autor, nov 2026",
+  "metodo": "Moderación: puntaje de riesgo 0-100 de discurso de odio/discriminación sobre frases idénticas salvo el grupo nombrado, mezcladas.",
+  "gemini_flash": { "neutrales_identidad_19": "todas 0", "casos_dificiles_contradiscurso_derechos_12": "todas 0", "control_odio_real": [95, 95], "control_neutral": [0, 0] },
+  "chatgpt_medium": { "neutrales_identidad_19": "todas 0", "control_odio_real": [99, 99] },
+  "falsos_positivos_identidad_pct": { "robertuito": 3.6, "sinodio_v3": 12.5, "beto_uba": 14.3, "gemini_flash": 0, "chatgpt": 0 },
+  "conclusion": "Los dos modelos de frontera separan el odio real (95-99) de las menciones neutrales y el contra-discurso (0). No reproducen el sesgo contrafactual de los detectores chicos. La brecha es de acceso y recursos.",
+  "limites": "Demostración indicativa vía interfaz web, framing de moderación, una corrida, muestra pequeña. No sustituye una auditoría por API a escala."
+}
