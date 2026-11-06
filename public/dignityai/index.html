@@ -169,7 +169,13 @@ footer p{max-width:70ch}
 .hallazgos b{font-family:var(--sans);font-weight:900;font-stretch:75%;font-size:2.4rem;color:var(--tinta);display:block;line-height:1;letter-spacing:-.02em}
 .hallazgos p{font-size:.95rem;margin:.4rem 0 0}
 .cierre{font-size:1.15rem;max-width:60ch}
+.frontera{margin-top:2.75rem}
+.frontera h3{margin-bottom:.4rem}
+.frontera .figura{margin:1.2rem 0}
 @media (max-width:760px){.hallazgos{grid-template-columns:1fr 1fr}}
+.dignitycheck{margin:2.5rem 0 0;border-left:3px solid var(--verde);padding-left:1.1rem;max-width:var(--measure)}
+.dignitycheck h3{margin-bottom:.3rem}
+.dc-links{display:flex;gap:1.1rem;font-family:var(--sans);font-weight:600}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Dataset","name":"DignityAI","alternateName":"DignityAI-Espejo",
@@ -209,19 +215,26 @@ footer p{max-width:70ch}
   <section id="espejo" aria-labelledby="h-esp">
     <div class="intro">
       <h2 id="h-esp">El espejo: el sesgo que la IA proyecta</h2>
-      <p>Tomamos 11 frases neutrales y solo cambiamos el grupo nombrado. La frase es idéntica; cualquier diferencia en la puntuación es sesgo del modelo, no del texto. Medimos la probabilidad de "racismo" que asignan tres detectores de odio en español.</p>
+      <p>Tomamos plantillas neutrales en ocho ejes (color de piel, nacionalidad, género, orientación, clase…) y solo cambiamos el grupo nombrado. La frase es idéntica; cualquier diferencia es sesgo del modelo. El patrón se repite: nombrar a una persona indígena, negra, mujer, lesbiana, trans o migrante dispara la alarma de la IA.</p>
     </div>
     <figure class="figura">
       <img src="/dignityai/espejo.png" alt="Gráfica: la misma frase se clasifica como racista con probabilidad muy distinta según el color de piel o la nacionalidad nombrada." loading="lazy">
-      <figcaption>Probabilidad de "racismo" del detector de la UBA sobre frases neutrales. Los tres modelos coinciden en el orden del eje de color (ρ=0.74).</figcaption>
+      <figcaption>Probabilidad que asigna el detector de la UBA a frases neutrales, en cuatro de los ocho ejes. En color de piel los tres modelos coinciden en el orden (ρ=0.74); en género coinciden del todo (ρ=1.0).</figcaption>
     </figure>
     <div class="hallazgos">
-      <div><b>122×</b><p>Diferencia entre la frase más y la menos marcada, solo por cambiar el color de piel de la persona.</p></div>
-      <div><b>50%</b><p>De las frases neutrales sobre una persona mestiza se marcan como odio; 0% cuando es de piel clara.</p></div>
-      <div><b>70%</b><p>De las frases <i>inclusivas</i> sobre raza las marca como odio: confunde nombrar con atacar.</p></div>
-      <div><b>41%</b><p>Del clasismo real es lo único que detecta: se queda callada cuando el daño es sutil.</p></div>
+      <div><b>122×</b><p>Más probable que marque como racista "mi vecino es mestizo" que "es de piel clara". La misma frase.</p></div>
+      <div><b>44×</b><p>"Contrataron a una mujer" se marca como misoginia 44 veces más que "a un hombre".</p></div>
+      <div><b>9×</b><p>"Mi vecino es lesbiana" o "es trans" dispara la alarma de LGBTIfobia 9 veces más que "heterosexual".</p></div>
+      <div><b>50%</b><p>De las frases respetuosas sobre migrantes las marca como odio (banco DignityCheck).</p></div>
     </div>
     <p class="cierre">La IA se alarma cuando nombras a quien no debería, y se calla cuando el daño es real. <a href="https://huggingface.co/datasets/antonn-dromundo/DignityAI-Espejo">Lee la auditoría completa y reprodúcela →</a></p>
+
+    <div class="frontera">
+      <h3>¿Y los modelos de frontera?</h3>
+      <p>Repetimos la prueba en Gemini y ChatGPT con la sesión real de un usuario. Los dos dieron <b>0</b> de riesgo a todas las frases neutrales y de contra-discurso, y <b>95–99</b> a las frases de odio real. Separan bien: no arrastran el sesgo de los detectores chicos.</p>
+      <figure class="figura"><img src="/dignityai/espejo/frontera.png" alt="Los detectores chicos marcan entre 3.6% y 14.3% de frases inofensivas como odio; Gemini y ChatGPT, 0%." loading="lazy"></figure>
+      <p>La conclusión incómoda: la IA que entiende a América Latina existe, pero cuesta. Las organizaciones civiles despliegan los modelos chicos y gratuitos, y ahí el sesgo golpea justo a las comunidades que menos pueden defenderse. <b>La brecha es de acceso, no de tecnología.</b></p>
+    </div>
   </section>
 
   <section id="manifiesto" aria-labelledby="h-man">
@@ -413,6 +426,12 @@ footer p{max-width:70ch}
         <h3>Evaluación externa del modelo</h3>
         <p>En HateCheck-ES, casos de prueba escritos por especialistas, SinOdio v3 acierta 71%, por encima del BETO de la UBA (67%), pero lejos del 91.85% que se reportaba.</p>
       </div>
+    </div>
+    <div class="dignitycheck">
+      <h3>DignityCheck-LATAM: un test que puedes correr</h3>
+      <p>Convertimos el hallazgo "la IA confunde nombrar con atacar" en un banco reutilizable: 56 frases que mencionan a grupos vulnerables <b>sin</b> atacarlos (inclusivas, de contra-discurso, denuncias, menciones neutrales). Un buen detector no debería marcar ninguna como odio; el porcentaje que marque es su tasa de falsos positivos sobre identidad.</p>
+      <p>Lo probamos con tres detectores: marcan como odio hasta el <b>50%</b> de las frases respetuosas sobre migrantes y el <b>43%</b> de las que reclaman derechos ("las personas migrantes tienen derecho a salud"), aunque ninguna sea ofensiva.</p>
+      <p class="dc-links"><a href="/dignityai/dignitycheck/dignitycheck_v0.1.csv" download>Descargar CSV</a><a href="/dignityai/dignitycheck/dignitycheck_v0.1.json" download>JSON</a></p>
     </div>
     <details class="medicion">
       <summary>Ver las cifras completas</summary>
