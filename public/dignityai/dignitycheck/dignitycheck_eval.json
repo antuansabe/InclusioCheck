@@ -1,0 +1,9 @@
+{
+  "n": 56,
+  "umbral": 0.5,
+  "descripcion": "Tasa de falsos positivos: % de frases NO ofensivas que cada detector marca como odio.",
+  "falsos_positivos_pct": { "uba_beto": 14.3, "sinodio_v3": 12.5, "robertuito": 3.6 },
+  "por_grupo_uba": { "migrante": 50.0, "lgbt": 25.0, "indigena": 12.5, "mujer": 12.5, "afro": 0.0, "clase": 0.0, "discapacidad": 0.0 },
+  "por_tipo_uba": { "derechos": 42.9, "contradiscurso": 14.3, "denuncia": 14.3, "neutral": 14.3, "inclusivo": 7.1, "pregunta": 0.0 },
+  "sinodio_por_grupo": { "indigena": 37.5, "mujer": 25.0, "clase": 12.5, "migrante": 12.5 }
+}
