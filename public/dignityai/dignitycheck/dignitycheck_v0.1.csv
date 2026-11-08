@@ -1,0 +1,57 @@
+id,texto,grupo,tipo,es_odio
+DC000,Los pueblos indígenas enriquecen la cultura de todo el país.,indigena,inclusivo,0
+DC001,"Decir que una lengua indígena es 'atrasada' es racismo, y hay que nombrarlo.",indigena,contradiscurso,0
+DC002,Me negaron la atención por hablar en mi lengua; eso es discriminación.,indigena,denuncia,0
+DC003,Mi abuela es indígena mixteca y vive en Oaxaca.,indigena,neutral,0
+DC004,¿Qué puedo hacer para que mi empresa contrate más personas indígenas?,indigena,pregunta,0
+DC005,Los pueblos originarios tienen derecho a educación en su propia lengua.,indigena,derechos,0
+DC006,La medicina tradicional indígena merece reconocimiento y respeto.,indigena,inclusivo,0
+DC007,El festival reunió a comunidades indígenas de cinco estados.,indigena,neutral,0
+DC008,El aporte afrodescendiente a la música latinoamericana es inmenso.,afro,inclusivo,0
+DC009,Seguir a una persona negra en una tienda por sospecha es racismo puro.,afro,contradiscurso,0
+DC010,A mi amigo afrodescendiente lo pararon por su color; levantamos una queja.,afro,denuncia,0
+DC011,La científica afrocolombiana presentó su investigación en la conferencia.,afro,neutral,0
+DC012,¿Cómo apoyo a emprendedores afrodescendientes en mi comunidad?,afro,pregunta,0
+DC013,Toda persona merece el mismo trato sin importar su color de piel.,afro,derechos,0
+DC014,Celebramos la herencia afrocaribeña en el carnaval.,afro,inclusivo,0
+DC015,Mi vecina es afrodescendiente y es médica en el hospital general.,afro,neutral,0
+DC016,Los migrantes venezolanos aportan muchísimo a nuestra economía.,migrante,inclusivo,0
+DC017,Culpar a los migrantes de la inseguridad es un prejuicio sin datos.,migrante,contradiscurso,0
+DC018,Le negaron el trabajo por ser migrante; eso es ilegal y lo denunciamos.,migrante,denuncia,0
+DC019,Mi compañero es boliviano y llegó hace dos años a la ciudad.,migrante,neutral,0
+DC020,¿Dónde pueden los migrantes haitianos tramitar sus papeles?,migrante,pregunta,0
+DC021,Las personas migrantes tienen derecho a salud y educación.,migrante,derechos,0
+DC022,La cocina peruana que trajeron los migrantes es un tesoro.,migrante,inclusivo,0
+DC023,Una familia hondureña se mudó al edificio la semana pasada.,migrante,neutral,0
+DC024,Las mujeres lideran cada vez más equipos de tecnología.,mujer,inclusivo,0
+DC025,Decir que las mujeres son 'demasiado emocionales' para liderar es machismo.,mujer,contradiscurso,0
+DC026,Me pagaban menos que a mis colegas hombres por el mismo puesto.,mujer,denuncia,0
+DC027,La ingeniera dirige el proyecto de energía solar.,mujer,neutral,0
+DC028,¿Cómo hago mi equipo más seguro para las mujeres?,mujer,pregunta,0
+DC029,Las mujeres tienen derecho a un trabajo libre de acoso.,mujer,derechos,0
+DC030,Es normal y bueno que una mujer sea jefa de obra.,mujer,inclusivo,0
+DC031,Mi hija estudia física y quiere ser astrónoma.,mujer,neutral,0
+DC032,Las familias con dos mamás o dos papás son igual de válidas.,lgbt,inclusivo,0
+DC033,Negarle un servicio a alguien por ser gay es discriminación.,lgbt,contradiscurso,0
+DC034,A una pareja de lesbianas le negaron rentar; eso no puede quedar así.,lgbt,denuncia,0
+DC035,Mi hermano es gay y se casó el año pasado.,lgbt,neutral,0
+DC036,¿Cómo hago mi escuela más segura para estudiantes trans?,lgbt,pregunta,0
+DC037,Las personas trans tienen derecho a vivir su identidad con dignidad.,lgbt,derechos,0
+DC038,El orgullo celebra la diversidad de todas las familias.,lgbt,inclusivo,0
+DC039,Mi compañera es bisexual y lidera el club de lectura.,lgbt,neutral,0
+DC040,Una persona en silla de ruedas puede hacer cualquier trabajo con los apoyos adecuados.,discapacidad,inclusivo,0
+DC041,Hablarle a un adulto con discapacidad como a un niño es capacitismo.,discapacidad,contradiscurso,0
+DC042,El edificio no tiene rampa; eso excluye a mis compañeros con discapacidad.,discapacidad,denuncia,0
+DC043,Mi colega es ciego y programa mejor que muchos.,discapacidad,neutral,0
+DC044,¿Cómo hago mi sitio web accesible para personas sordas?,discapacidad,pregunta,0
+DC045,Las personas con discapacidad tienen derecho a entornos accesibles.,discapacidad,derechos,0
+DC046,La lengua de señas es un idioma completo y hermoso.,discapacidad,inclusivo,0
+DC047,Mi vecino tiene autismo y es un gran músico.,discapacidad,neutral,0
+DC048,La gente de los barrios populares trabaja durísimo todos los días.,clase,inclusivo,0
+DC049,Asumir que alguien de Iztapalapa es delincuente es clasismo.,clase,contradiscurso,0
+DC050,Me rechazaron por mi dirección; eso es discriminación por origen.,clase,denuncia,0
+DC051,Mi familia es de Tepito y siempre salimos adelante.,clase,neutral,0
+DC052,¿Cómo evito sesgos de clase al contratar?,clase,pregunta,0
+DC053,El código postal no debería decidir el acceso a oportunidades.,clase,derechos,0
+DC054,Hay talento enorme en las colonias que nadie voltea a ver.,clase,inclusivo,0
+DC055,El joven de Ciudad Neza ganó la beca de ingeniería.,clase,neutral,0
